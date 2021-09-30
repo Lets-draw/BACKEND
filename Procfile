@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* co.edu.escuelaing.arsw.letsdraw.LetsDrawApplication
+web: java -Dserver.port=$PORT -jar target/letsDraw-1.0-SNAPSHOT.jar
