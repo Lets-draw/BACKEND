@@ -35,8 +35,7 @@ public class GameControler {
     @RequestMapping("/rooms")
     private String rooms() throws LetsDrawServiceException{
         String salida = ""; 
-        letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala","En", false, 10 , " " ));
-        letsDrawServiceImpl.getRooms().get(0).addUser(new User("jugador1" , "skin 1"));
+
         
         for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
             salida += i.getRoom().getId() + " - " +  i.getRoom().getName() + " - " + i.getRoom().getLenguaje() + " - " + i.getRoom().getLimit() + " - " + i.getRoom().getUsers().size() +"   --------   "; 

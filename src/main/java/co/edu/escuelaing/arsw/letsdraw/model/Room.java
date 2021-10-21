@@ -7,6 +7,7 @@ package co.edu.escuelaing.arsw.letsdraw.model;
 
 import co.edu.escuelaing.arsw.letsdraw.services.impl.LetsDrawServiceImpl;
 import co.edu.escuelaing.arsw.letsdraw.services.exceptions.LetsDrawServiceException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,15 +31,48 @@ public class Room {
     private Board board; 
     private final int maxUsers = 10 ;
     
-    public Room(String name , String lenguaje , boolean priv , int limit , String password) throws LetsDrawServiceException{
+    public Room(String name , String lenguaje , boolean priv , int limit ) throws LetsDrawServiceException{
         this.name = name ;
         this.timer = 60; 
         this.lenguaje = lenguaje; 
         this.limit = limit; 
+        validLimit(); 
         this.priv = priv; 
-        this.password = password; 
+        randomPassword(); 
         board = new Board(); 
     }
+    
+    
+    private void randomPassword(){
+        if(priv){
+                // ASCII range – alphanumeric (0-9, a-z, A-Z)
+            final String chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+            SecureRandom random = new SecureRandom();
+            StringBuilder sb = new StringBuilder();
+
+            // each iteration of the loop randomly chooses a character from the given
+            // ASCII range and appends it to the `StringBuilder` instance
+
+
+            for (int i = 0; i < 5; i++)
+            {
+                int randomIndex = random.nextInt(chars.length());
+                sb.append(chars.charAt(randomIndex));
+            }
+        
+            password =  sb.toString();
+        }else{
+            password = null; 
+        }
+       
+    }
+    private void validLimit(){
+        if(limit > maxUsers){
+            limit = maxUsers; 
+        } 
+    }
+    
     
     public void setId(int id){
         this . id = id; 
@@ -60,7 +94,7 @@ public class Room {
         return messages;  
     }
     
-    public int gettimer(){
+    public int getTimer(){
         return timer; 
     }
     
@@ -110,6 +144,10 @@ public class Room {
     public void setBoard(Board board){
         this.board = board; 
     } 
+    
+    public String getPassword(){
+        return password; 
+    }
     
     
     

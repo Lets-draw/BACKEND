@@ -24,20 +24,32 @@ public class RoomServiceImpl implements InterfaceRoomService {
     public RoomServiceImpl(){
     }
     
-    public RoomServiceImpl(String name , String lenguaje , boolean priv , int limit , String password) throws LetsDrawServiceException {
-        room = new Room (name ,lenguaje , priv, limit ,password);  
+    public RoomServiceImpl(String name , String lenguaje , boolean priv , int limit) throws LetsDrawServiceException {
+        room = new Room (name ,lenguaje , priv, limit);  
     }
 
     @Override
-    public void addUser(User u) {
-        ArrayList<User> users = room.getUsers();
-        users.add(u); 
-        room.setUsers(users);
+    public void addUser(User u) throws LetsDrawServiceException {
+        if(room.getLimit() > room.getUsers().size() ){
+            ArrayList<User> users = room.getUsers();
+            u.setId(room.getUsers().size() + 1 ) ;
+            users.add(u); 
+            room.setUsers(users);
+        }else{
+            throw new LetsDrawServiceException("limite de usuariso alcanzado");  
+        }
     }
 
     @Override
     public void delUser(User u) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for(User i: room.getUsers()){
+            if(i.getId() == u.getId()){
+                ArrayList<User> a = room.getUsers();
+                a.remove(i); 
+                room.setUsers(a);
+                break; 
+            }
+        }
     }
 
     @Override
@@ -88,6 +100,17 @@ public class RoomServiceImpl implements InterfaceRoomService {
     @Override
     public void setroom(Room room) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public User searchUserById(int id) throws LetsDrawServiceException{
+        for(User i : room.getUsers()){
+            if(i.getId() == id){
+                return i; 
+                 
+            }
+        }
+        throw(new LetsDrawServiceException("usuario no encontrado"));  
     }
     
        

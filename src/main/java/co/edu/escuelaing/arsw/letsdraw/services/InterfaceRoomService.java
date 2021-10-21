@@ -7,6 +7,7 @@ package co.edu.escuelaing.arsw.letsdraw.services;
 
 import co.edu.escuelaing.arsw.letsdraw.model.Room;
 import co.edu.escuelaing.arsw.letsdraw.model.User;
+import co.edu.escuelaing.arsw.letsdraw.services.exceptions.LetsDrawServiceException;
 
 /**
  *
@@ -14,17 +15,18 @@ import co.edu.escuelaing.arsw.letsdraw.model.User;
  */
 public interface InterfaceRoomService{
     
-    public void addUser(User u); 
-    public void delUser(User u ); 
-    public void changeLenguaje(String lenguaje); 
-    public void startTimer(); 
-    public void stopTimer(); 
-    public void changeTurn(); 
-    public void sendMessage(User u , String message); 
-    public void endRound();
-    public void startRound();
-    public String getWord(); 
-    public Room getRoom(); 
-    public void setroom(Room room); 
+    public void addUser(User u) throws LetsDrawServiceException; 
+    public void delUser(User u )throws LetsDrawServiceException; 
+    public void changeLenguaje(String lenguaje)throws LetsDrawServiceException; 
+    public void startTimer()throws LetsDrawServiceException; 
+    public void stopTimer()throws LetsDrawServiceException; 
+    public void changeTurn()throws LetsDrawServiceException; 
+    public void sendMessage(User u , String message)throws LetsDrawServiceException; 
+    public void endRound()throws LetsDrawServiceException;
+    public void startRound()throws LetsDrawServiceException;
+    public String getWord()throws LetsDrawServiceException; 
+    public Room getRoom()throws LetsDrawServiceException; 
+    public void setroom(Room room)throws LetsDrawServiceException;
+    public User searchUserById(int id)throws LetsDrawServiceException;  
     
 }

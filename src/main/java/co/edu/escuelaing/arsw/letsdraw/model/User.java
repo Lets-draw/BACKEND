@@ -26,14 +26,14 @@ public class User {
     public User(String nickname, String skin) throws LetsDrawServiceException{
         this.nickname = nickname; 
         points = 0 ; 
-        id = 0; 
-        //id = letsDrawService.getUsers().size() + 1 ;
         this.skin = skin; 
     }
     public int getId(){
         return id; 
     }
-    
+    public void setId(int id ){
+        this.id = id; 
+    }
     public int getPoints(){
         return points; 
     }
