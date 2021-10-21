@@ -5,8 +5,6 @@
  */
 package co.edu.escuelaing.arsw.letsdraw.model;
 
-import javafx.scene.paint.Color;
-
 /**
  *
  * @author jgarc
