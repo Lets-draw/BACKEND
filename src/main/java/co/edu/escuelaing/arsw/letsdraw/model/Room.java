@@ -8,7 +8,6 @@ package co.edu.escuelaing.arsw.letsdraw.model;
 import co.edu.escuelaing.arsw.letsdraw.services.impl.LetsDrawServiceImpl;
 import co.edu.escuelaing.arsw.letsdraw.services.exceptions.LetsDrawServiceException;
 import java.util.ArrayList;
-import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
