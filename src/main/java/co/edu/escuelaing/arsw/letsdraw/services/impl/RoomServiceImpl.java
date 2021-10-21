@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.escuelaing.arsw.letsdraw.services;
+package co.edu.escuelaing.arsw.letsdraw.services.impl;
 
 import co.edu.escuelaing.arsw.letsdraw.model.Room;
 import co.edu.escuelaing.arsw.letsdraw.model.User;
+import co.edu.escuelaing.arsw.letsdraw.services.InterfaceRoomService;
 import co.edu.escuelaing.arsw.letsdraw.services.exceptions.LetsDrawServiceException;
 import java.util.ArrayList;
 import org.springframework.stereotype.Service;
@@ -15,52 +16,79 @@ import org.springframework.stereotype.Service;
  *
  * @author jgarc
  */
+
 @Service 
-public class LetsDrawService implements InterfaceLetsDrawService {
+public class RoomServiceImpl implements InterfaceRoomService {
+    
+    private Room room; 
+    public RoomServiceImpl(){
+    }
+    
+    public RoomServiceImpl(String name , String lenguaje , boolean priv , int limit , String password) throws LetsDrawServiceException {
+        room = new Room (name ,lenguaje , priv, limit ,password);  
+    }
 
     @Override
-    public void createUser(String nickname) throws LetsDrawServiceException {
+    public void addUser(User u) {
+        ArrayList<User> users = room.getUsers();
+        users.add(u); 
+        room.setUsers(users);
+    }
+
+    @Override
+    public void delUser(User u) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void createRoom(String name, boolean priv, String password) throws LetsDrawServiceException {
+    public void changeLenguaje(String lenguaje) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void logRoom(String name) {
+    public void startTimer() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String addUserRoom(String idSala) throws LetsDrawServiceException {
+    public void stopTimer() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void removeUserRoom(String idSala) throws LetsDrawServiceException {
+    public void changeTurn() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void changeUserName(String name) throws LetsDrawServiceException {
+    public void sendMessage(User u, String message) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String getWord() throws LetsDrawServiceException {
+    public void endRound() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<Room> getRooms() throws LetsDrawServiceException {
+    public void startRound() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getWord() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Room getRoom() {
+        return room;  //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setroom(Room room) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    @Override
-    public ArrayList<User> getUsers() throws LetsDrawServiceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+       
 }

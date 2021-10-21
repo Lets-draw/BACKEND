@@ -5,7 +5,7 @@
  */
 package co.edu.escuelaing.arsw.letsdraw.model;
 
-import co.edu.escuelaing.arsw.letsdraw.services.LetsDrawService;
+import co.edu.escuelaing.arsw.letsdraw.services.impl.LetsDrawServiceImpl;
 import co.edu.escuelaing.arsw.letsdraw.services.exceptions.LetsDrawServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,16 +16,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class User {
     @Autowired
-    LetsDrawService letsDrawService;  
+    LetsDrawServiceImpl letsDrawService;  
     private String nickname; 
     private int points; 
     private int id ; 
+    private String skin; 
     
     
-    public User(String nickname) throws LetsDrawServiceException{
+    public User(String nickname, String skin) throws LetsDrawServiceException{
         this.nickname = nickname; 
         points = 0 ; 
-        id = letsDrawService.getUsers().size() + 1 ; 
+        id = 0; 
+        //id = letsDrawService.getUsers().size() + 1 ;
+        this.skin = skin; 
     }
     public int getId(){
         return id; 
@@ -47,4 +50,12 @@ public class User {
         this.nickname = nickname; 
     } 
     
+    public String getSkin(){
+        return skin; 
+    }
+    
+    public void setSkin(String skin){
+        this.skin = skin; 
+    }
+  
 }

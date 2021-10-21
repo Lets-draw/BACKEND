@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     
     <groupId>co.edu.escuelaing.arsw</groupId>
-    <artifactId>letsDraw</artifactId>
+    <artifactId>letsDrawBack</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <build>
@@ -31,7 +31,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
-      
+    
     </plugins>
   </build>
     <properties>
@@ -72,5 +72,5 @@
 
        
     </dependencies>
-        
+    <name>letsDrawBack</name>
 </project>
