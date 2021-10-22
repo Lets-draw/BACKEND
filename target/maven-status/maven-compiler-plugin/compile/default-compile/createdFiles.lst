@@ -1,6 +1,10 @@
 co\edu\escuelaing\arsw\letsdraw\controllers\GameControler.class
 co\edu\escuelaing\arsw\letsdraw\services\exceptions\LetsDrawServiceException.class
 co\edu\escuelaing\arsw\letsdraw\services\InterfaceLetsDrawService.class
+co\edu\escuelaing\arsw\letsdraw\services\impl\RoomServiceImpl.class
 co\edu\escuelaing\arsw\letsdraw\model\User.class
-co\edu\escuelaing\arsw\letsdraw\LetsDrawApplication.class
 co\edu\escuelaing\arsw\letsdraw\model\Room.class
+co\edu\escuelaing\arsw\letsdraw\model\Board.class
+co\edu\escuelaing\arsw\letsdraw\services\impl\LetsDrawServiceImpl.class
+co\edu\escuelaing\arsw\letsdraw\services\InterfaceRoomService.class
+co\edu\escuelaing\arsw\letsdraw\LetsDrawApplication.class

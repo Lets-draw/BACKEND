@@ -5,12 +5,16 @@ import co.edu.escuelaing.arsw.letsdraw.model.User;
 import co.edu.escuelaing.arsw.letsdraw.services.impl.LetsDrawServiceImpl;
 import co.edu.escuelaing.arsw.letsdraw.services.exceptions.LetsDrawServiceException;
 import co.edu.escuelaing.arsw.letsdraw.services.impl.RoomServiceImpl;
+import javax.servlet.http.HttpServletRequest;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 /**
  *
  * @author jgarc
@@ -62,4 +66,25 @@ public class GameControler {
 "   ]\n" +
 "}"; 
     }
+
+    @RequestMapping(value = "/addRoom/{name}/{lenguaje}/{priv}/{limit}/", method = RequestMethod.GET)
+
+    public int addRoom(@PathVariable("name") String name,@PathVariable("lenguaje") String lenguaje ,
+            @PathVariable("priv") boolean priv ,@PathVariable("limit") int limit) throws LetsDrawServiceException {
+        
+        /**
+        
+        System.out.println("name : " + name);
+        System.out.println("lenguaje : " + lenguaje);
+        System.out.println("priv : " + priv ); 
+        System.out.println("limit : " + limit ); 
+        
+        **/
+        
+        letsDrawServiceImpl.createRoom(new RoomServiceImpl(name,lenguaje,priv,limit));
+        
+        return letsDrawServiceImpl.getRooms().get(letsDrawServiceImpl.getRooms().size() -1 ).getRoom().getId();
+    }
 }
+
+
