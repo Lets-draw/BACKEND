@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.escuelaing.arsw.letsdraw.controllers;
 
 import co.edu.escuelaing.arsw.letsdraw.model.Room;
@@ -35,12 +30,36 @@ public class GameControler {
     @RequestMapping("/rooms")
     private String rooms() throws LetsDrawServiceException{
         String salida = ""; 
-
+        letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala","En", false, 10 ));
+        letsDrawServiceImpl.getRooms().get(0).addUser(new User("jugador1" , "skin 1"));
         
         for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
-            salida += i.getRoom().getId() + " - " +  i.getRoom().getName() + " - " + i.getRoom().getLenguaje() + " - " + i.getRoom().getLimit() + " - " + i.getRoom().getUsers().size() +"   --------   "; 
+            if(letsDrawServiceImpl.getRooms().indexOf(i)==letsDrawServiceImpl.getRooms().size()-1){
+               salida += "{\n" +
+    "           \"id\": \""+i.getRoom().getId()+"\",\n" +
+    "           \"name\": \""+i.getRoom().getName()+"\",\n" +
+    "           \"users\": \""+i.getRoom().getUsers().size()+"/"+i.getRoom().getLimit()+"\",\n" +
+    "           \"lenguaje\": \""+i.getRoom().getLenguaje()+"\",\n" +
+    "           \"priv\": \""+i.getRoom().getPriv()+"\"\n"+
+    "           }\n"; 
+            }
+            else{
+                salida += "{\n" +
+    "           \"id\": \""+i.getRoom().getId()+"\",\n" +
+    "           \"name\": \""+i.getRoom().getName()+"\",\n" +
+    "           \"users\": \""+i.getRoom().getUsers().size()+"/"+i.getRoom().getLimit()+"\",\n" +
+    "           \"lenguaje\": \""+i.getRoom().getLenguaje()+"\",\n" +
+    "           \"priv\": \""+i.getRoom().getPriv()+"\"\n"+
+    "           },\n";
+            }
+            //i.getRoom().getId() + " - " +  i.getRoom().getName() + " - " + i.getRoom().getLenguaje() + " - " + i.getRoom().getLimit() + " - " + i.getRoom().getUsers().size() +"   --------   "; 
         }
         
-        return salida;   
+        //return salida;  
+        return "{\n" +
+"    \"person\": [\n" +
+      salida +
+"   ]\n" +
+"}"; 
     }
 }
