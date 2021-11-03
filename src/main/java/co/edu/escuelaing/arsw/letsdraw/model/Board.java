@@ -5,6 +5,9 @@
  */
 package co.edu.escuelaing.arsw.letsdraw.model;
 
+import java.util.ArrayList;
+//import javafx.util.Pair;
+
 /**
  *
  * @author jgarc
@@ -12,7 +15,8 @@ package co.edu.escuelaing.arsw.letsdraw.model;
 public class Board {
     private String color; 
     private boolean eraser; 
-    
+    private ArrayList<int[]> points; 
+    //private ArrayList<Pair<int, int>>; 
     public Board(){
         color = "black"; 
     }
@@ -20,6 +24,7 @@ public class Board {
     public void setColor( String color){
         this.color = color; 
     }
+    
     public String getColor(){
         return color; 
     }
@@ -31,5 +36,4 @@ public class Board {
     public boolean getEraser(){
         return eraser; 
     } 
-    
 }

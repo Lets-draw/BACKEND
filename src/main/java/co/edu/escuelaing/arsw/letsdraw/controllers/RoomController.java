@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 
 @RestController
-public class GameControler {
+public class RoomController {
     @Autowired
     LetsDrawServiceImpl letsDrawServiceImpl; 
     

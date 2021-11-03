@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class User {
     @Autowired
     LetsDrawServiceImpl letsDrawService;  
+    
     private String nickname; 
     private int points; 
     private int id ; 
