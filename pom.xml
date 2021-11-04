@@ -24,6 +24,14 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <archive>
+                    <manifest>
+
+                    <!-- give full qualified name of your main class-->
+                      <mainClass>co.edu.escuelaing.arsw.letsdraw.LetsDrawApplication</mainClass>
+
+                    </manifest>
+                  </archive>
                 </configuration>
         
             </plugin>
