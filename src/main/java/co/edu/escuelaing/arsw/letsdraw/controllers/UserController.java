@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author jgarc
  */
+@RestController
 public class UserController {
     @Autowired
     LetsDrawServiceImpl letsDrawServiceImpl; 
@@ -28,6 +30,7 @@ public class UserController {
     @RequestMapping(value = "/addUser/{name}/{skin}/{id}", method = RequestMethod.GET)
 
     public String createAndAddUser(@PathVariable("name") String name,@PathVariable("skin") String skin ,@PathVariable("id") int id ) throws LetsDrawServiceException {
+        
         letsDrawServiceImpl.createUser(new User(name, skin) , id);
         
         return name;    

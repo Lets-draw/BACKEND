@@ -20,9 +20,6 @@ import org.springframework.stereotype.Service;
 public class LetsDrawServiceImpl implements InterfaceLetsDrawService {
     private ArrayList<RoomServiceImpl> rooms = new ArrayList<RoomServiceImpl>(); 
     
-
-
-
     @Override
     public ArrayList<RoomServiceImpl> getRooms() {
         return rooms; 
@@ -39,9 +36,6 @@ public class LetsDrawServiceImpl implements InterfaceLetsDrawService {
         
         ArrayList<RoomServiceImpl> rooms = getRooms();
         for(RoomServiceImpl i : rooms ){
-            System.out.println(i.getRoom().getName());
-            System.out.println( id); 
-            System.out.println( i.getRoom().getId()); 
             
             if (i.getRoom().getId() == id){
                 i.addUser(u);
