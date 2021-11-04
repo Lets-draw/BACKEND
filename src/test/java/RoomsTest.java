@@ -86,4 +86,12 @@ public class RoomsTest {
             assertEquals( letsDrawServiceImpl.getRooms().get(letsDrawServiceImpl.getRooms().size()-1).getRoom().getUsers().size() , 3 ); 
         }
     }
+    
+    @Test
+    public void deberiaAñadirusuarioPorId() throws LetsDrawServiceException{
+         letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala1","En", false, 3));
+         letsDrawServiceImpl.createUser(new User("usuario1", "skin1"), 1);
+         assertEquals( letsDrawServiceImpl.getRooms().get(0).getRoom().getUsers().size(), 1); 
+         
+    }
 }

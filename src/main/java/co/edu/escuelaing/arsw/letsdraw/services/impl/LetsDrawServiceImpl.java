@@ -20,27 +20,14 @@ import org.springframework.stereotype.Service;
 public class LetsDrawServiceImpl implements InterfaceLetsDrawService {
     private ArrayList<RoomServiceImpl> rooms = new ArrayList<RoomServiceImpl>(); 
     
-    @Override
-    public void setLenguaje() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-    public void createUser() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 
     @Override
     public ArrayList<RoomServiceImpl> getRooms() {
         return rooms; 
     }
-    /**
-    @Override
-    public ArrayList<User> getUsers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    **/ 
-
+    
     @Override
     public void createRoom(RoomServiceImpl r) {
         r.getRoom().setId(rooms.size() +1 );
@@ -48,10 +35,19 @@ public class LetsDrawServiceImpl implements InterfaceLetsDrawService {
     }
 
     @Override
-    public void createUser(User u) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void createUser(User u , int id) throws LetsDrawServiceException {
+        
+        ArrayList<RoomServiceImpl> rooms = getRooms();
+        for(RoomServiceImpl i : rooms ){
+            System.out.println(i.getRoom().getName());
+            System.out.println( id); 
+            System.out.println( i.getRoom().getId()); 
+            
+            if (i.getRoom().getId() == id){
+                i.addUser(u);
+                break; 
+            } 
+        }
     }
-
-
 
 }

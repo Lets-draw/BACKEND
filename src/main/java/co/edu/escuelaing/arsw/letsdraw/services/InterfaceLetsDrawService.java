@@ -19,11 +19,8 @@ import java.util.ArrayList;
  */
 public interface InterfaceLetsDrawService {
     
-    public void setLenguaje(); 
-    public void createUser(); 
     public ArrayList<RoomServiceImpl> getRooms(); 
-    //public ArrayList<User> getUsers();
     public void createRoom(RoomServiceImpl r); 
-    public void createUser(User u);
+    public void createUser(User u , int id ) throws LetsDrawServiceException ;
     
 }

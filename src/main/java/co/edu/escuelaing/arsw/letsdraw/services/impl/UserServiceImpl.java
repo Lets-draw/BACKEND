@@ -14,12 +14,12 @@ import co.edu.escuelaing.arsw.letsdraw.services.exceptions.LetsDrawServiceExcept
  *
  * @author jgarc
  */
-public class ClientUserImpl implements InterfaceUserService {
+public class UserServiceImpl implements InterfaceUserService {
     private User user ; 
     
-    public ClientUserImpl(){}
+    public UserServiceImpl(){}
     
-    public ClientUserImpl(String nickname, String skin) throws LetsDrawServiceException{
+    public UserServiceImpl(String nickname, String skin) throws LetsDrawServiceException{
     
         user = new User(nickname, skin); 
     }
