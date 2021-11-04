@@ -28,7 +28,7 @@ public class RoomController {
     @Autowired
     LetsDrawServiceImpl letsDrawServiceImpl;
 
-    @RequestMapping("/HelloWorld")
+    @RequestMapping("/")
     private String testing() throws LetsDrawServiceException {
         return "Hello World ARSW";
     }
