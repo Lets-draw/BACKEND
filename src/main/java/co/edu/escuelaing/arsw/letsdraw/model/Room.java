@@ -28,8 +28,11 @@ public class Room {
     private ArrayList<User> users = new ArrayList<User>(); 
     private ArrayList<ArrayList<String>> messages = new ArrayList<ArrayList<String>>(); 
     private int timer; 
-    private Board board; 
+    private Board board;
+    private String word; 
     private final int maxUsers = 10 ;
+    private String[] palabrasEs = {"caballo", "zanahoria", "pollo","carro" , "celular", "cabello", "lapiz"}; 
+    private String[] palabrasIn = {"horse", "carrot", "chicken", "car", "phone", "hair", "pencil"}; 
     
     public Room(String name , String lenguaje , boolean priv , int limit ) throws LetsDrawServiceException{
         this.name = name ;
@@ -37,11 +40,32 @@ public class Room {
         this.lenguaje = lenguaje; 
         this.limit = limit; 
         validLimit(); 
-        this.priv = priv; 
+        this.priv = priv;
+        word = randomWord(); 
         randomPassword(); 
         board = new Board(); 
     }
     
+    private String randomWord(){
+        String w = ""; 
+        SecureRandom random = new SecureRandom();
+        if(lenguaje.equals("Español")){
+            int randomIndex = random.nextInt(palabrasEs.length);
+            w = palabrasEs[randomIndex];
+        }else{
+            int randomIndex = random.nextInt(palabrasIn.length);
+            w = palabrasIn[randomIndex]; 
+        }
+        return w; 
+    }
+    
+    public void changeWord(){
+        String nword = randomWord(); 
+        while(nword.equals(word)){
+            nword = randomWord(); 
+        }
+        word = nword; 
+    }
     
     private void randomPassword(){
         if(priv){
@@ -73,6 +97,13 @@ public class Room {
         } 
     }
     
+    public void setWord(String word ){
+        this.word = word; 
+    } 
+    
+    public String getWord(){
+        return word; 
+    }
     
     public void setId(int id){
         this . id = id; 

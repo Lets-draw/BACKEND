@@ -1,4 +1,3 @@
-co\edu\escuelaing\arsw\letsdraw\controllers\RoomController.class
 co\edu\escuelaing\arsw\letsdraw\controllers\UserController.class
 co\edu\escuelaing\arsw\letsdraw\services\exceptions\LetsDrawServiceException.class
 co\edu\escuelaing\arsw\letsdraw\services\InterfaceLetsDrawService.class

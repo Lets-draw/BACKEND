@@ -94,4 +94,21 @@ public class RoomsTest {
          assertEquals( letsDrawServiceImpl.getRooms().get(0).getRoom().getUsers().size(), 1); 
          
     }
+    @Test
+    public void deberiaCrearPalabraAleatoria() throws LetsDrawServiceException{
+         letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala1","En", false, 3));
+         System.out.println(letsDrawServiceImpl.getRooms().get(0).getRoom().getWord()); 
+         assertNotSame(letsDrawServiceImpl.getRooms().get(0).getRoom().getWord() , null); 
+    }
+    @Test
+    public void deberiaRegenerarLasPalabras() throws LetsDrawServiceException{
+         letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala1","En", false, 3));
+         String p1 = letsDrawServiceImpl.getRooms().get(0).getRoom().getWord();
+         letsDrawServiceImpl.getRooms().get(0).getRoom().changeWord(); 
+         String p2 = letsDrawServiceImpl.getRooms().get(0).getRoom().getWord();
+         System.out.println(p1 + " - " +  p2); 
+         assertNotSame(p1 ,p2); 
+    }
+    
+    
 }

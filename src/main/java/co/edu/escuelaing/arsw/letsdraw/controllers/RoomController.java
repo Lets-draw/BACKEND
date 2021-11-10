@@ -32,11 +32,23 @@ public class RoomController {
     private String testing() throws LetsDrawServiceException {
         return "Hello World ARSW";
     }
-
+    
+    @RequestMapping(value = "/getWord/{id}/", method = RequestMethod.GET)
+    public String getWord(@PathVariable("id") int id) throws LetsDrawServiceException {
+        //letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
+        String word = "N O N E";
+        for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
+            if (i.getRoom().getId() == id) {
+                word = i.getRoom().getWord(); 
+            }
+        }
+        return word;
+    }
+            
+    
     @RequestMapping(value = "/addRoom/{name}/{lenguaje}/{priv}/{limit}/", method = RequestMethod.GET)
-
     public int addRoom(@PathVariable("name") String name, @PathVariable("lenguaje") String lenguaje,
-            @PathVariable("priv") boolean priv, @PathVariable("limit") int limit) throws LetsDrawServiceException {
+            @PathVariable("priv") boolean priv, @PathVariable("limit") int limit) throws LetsDrawServiceException{
 
         /**
          *
@@ -57,7 +69,7 @@ public class RoomController {
      */
     @RequestMapping(value = "/getRoomInfo/{id}", method = RequestMethod.GET)
     public String getRoomInfo(@PathVariable("id") int id) throws LetsDrawServiceException {
-       // letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
+        //letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
         //letsDrawServiceImpl.getRooms().get(letsDrawServiceImpl.getRooms().size()-1).addUser(new User("juan", "skin1"));
         //letsDrawServiceImpl.getRooms().get(letsDrawServiceImpl.getRooms().size()-1).addUser(new User("pedro", "skin1"));
         
@@ -102,6 +114,7 @@ public class RoomController {
     @RequestMapping("/rooms")
     private String rooms() throws LetsDrawServiceException {
         String salida = "";
+        //
         //letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
         //letsDrawServiceImpl.getRooms().get(0).addUser(new User("jugador1", "skin 1"));
 
