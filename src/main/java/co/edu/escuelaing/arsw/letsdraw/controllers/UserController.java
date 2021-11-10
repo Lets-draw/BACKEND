@@ -28,11 +28,9 @@ public class UserController {
     LetsDrawServiceImpl letsDrawServiceImpl; 
     
     @RequestMapping(value = "/addUser/{name}/{skin}/{id}", method = RequestMethod.GET)
-
+    
     public String createAndAddUser(@PathVariable("name") String name,@PathVariable("skin") String skin ,@PathVariable("id") int id ) throws LetsDrawServiceException {
-        
-        letsDrawServiceImpl.createUser(new User(name, skin) , id);
-        
+        letsDrawServiceImpl.addUserToRoomById(new User(name, skin) , id);
         return name;    
     }
     

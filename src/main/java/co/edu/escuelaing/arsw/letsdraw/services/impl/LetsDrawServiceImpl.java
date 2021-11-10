@@ -32,7 +32,7 @@ public class LetsDrawServiceImpl implements InterfaceLetsDrawService {
     }
 
     @Override
-    public void createUser(User u , int id) throws LetsDrawServiceException {
+    public void addUserToRoomById(User u , int id) throws LetsDrawServiceException {
         
         ArrayList<RoomServiceImpl> rooms = getRooms();
         for(RoomServiceImpl i : rooms ){

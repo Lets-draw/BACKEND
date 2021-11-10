@@ -27,6 +27,6 @@ public interface InterfaceRoomService{
     public String getWord()throws LetsDrawServiceException; 
     public Room getRoom()throws LetsDrawServiceException; 
     public void setroom(Room room)throws LetsDrawServiceException;
-    public User searchUserById(int id)throws LetsDrawServiceException;  
+    public User searchUserById(int id)throws LetsDrawServiceException;
     
 }
