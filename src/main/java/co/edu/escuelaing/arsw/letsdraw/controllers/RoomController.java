@@ -57,9 +57,9 @@ public class RoomController {
      */
     @RequestMapping(value = "/getRoomInfo/{id}", method = RequestMethod.GET)
     public String getRoomInfo(@PathVariable("id") int id) throws LetsDrawServiceException {
-        letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
-        letsDrawServiceImpl.getRooms().get(letsDrawServiceImpl.getRooms().size()-1).addUser(new User("juan", "skin1"));
-        letsDrawServiceImpl.getRooms().get(letsDrawServiceImpl.getRooms().size()-1).addUser(new User("pedro", "skin1"));
+       // letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
+        //letsDrawServiceImpl.getRooms().get(letsDrawServiceImpl.getRooms().size()-1).addUser(new User("juan", "skin1"));
+        //letsDrawServiceImpl.getRooms().get(letsDrawServiceImpl.getRooms().size()-1).addUser(new User("pedro", "skin1"));
         
         ArrayList<User> users = null;
         String sala = "";
@@ -102,8 +102,8 @@ public class RoomController {
     @RequestMapping("/rooms")
     private String rooms() throws LetsDrawServiceException {
         String salida = "";
-        letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
-        letsDrawServiceImpl.getRooms().get(0).addUser(new User("jugador1", "skin 1"));
+        //letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
+        //letsDrawServiceImpl.getRooms().get(0).addUser(new User("jugador1", "skin 1"));
 
         for (RoomServiceImpl i : letsDrawServiceImpl.getRooms()) {
             if (letsDrawServiceImpl.getRooms().indexOf(i) == letsDrawServiceImpl.getRooms().size() - 1) {
