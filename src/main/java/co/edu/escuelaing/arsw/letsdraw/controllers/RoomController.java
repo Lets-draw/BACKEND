@@ -35,14 +35,16 @@ public class RoomController {
     
     @RequestMapping(value = "/getWord/{id}/", method = RequestMethod.GET)
     public String getWord(@PathVariable("id") int id) throws LetsDrawServiceException {
-        //letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
+        letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
         String word = "N O N E";
         for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
             if (i.getRoom().getId() == id) {
                 word = i.getRoom().getWord(); 
             }
         }
-        return word;
+        return "{\n"
+                + "    \"name\": " + "\"" + word +"\"\n"
+                + "}";
     }
             
     
