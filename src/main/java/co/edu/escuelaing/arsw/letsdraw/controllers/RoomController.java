@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -27,13 +28,16 @@ public class RoomController {
 
     @Autowired
     LetsDrawServiceImpl letsDrawServiceImpl;
-
+    
+    @CrossOrigin
     @RequestMapping("/")
+    
     private String testing() throws LetsDrawServiceException {
         return "Hello World ARSW";
     }
-    
+    @CrossOrigin
     @RequestMapping(value = "/getWord/{id}/", method = RequestMethod.GET)
+    
     public String getWord(@PathVariable("id") int id) throws LetsDrawServiceException {
         letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
         String word = "N O N E";
@@ -47,7 +51,7 @@ public class RoomController {
                 + "}";
     }
             
-    
+    @CrossOrigin
     @RequestMapping(value = "/addRoom/{name}/{lenguaje}/{priv}/{limit}/", method = RequestMethod.GET)
     public int addRoom(@PathVariable("name") String name, @PathVariable("lenguaje") String lenguaje,
             @PathVariable("priv") boolean priv, @PathVariable("limit") int limit) throws LetsDrawServiceException{
@@ -69,6 +73,7 @@ public class RoomController {
      * @param id
      * @return
      */
+    @CrossOrigin
     @RequestMapping(value = "/getRoomInfo/{id}", method = RequestMethod.GET)
     public String getRoomInfo(@PathVariable("id") int id) throws LetsDrawServiceException {
         //letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
@@ -112,7 +117,7 @@ public class RoomController {
                 + "}";
 
     }
-
+    @CrossOrigin
     @RequestMapping("/rooms")
     private String rooms() throws LetsDrawServiceException {
         String salida = "";
