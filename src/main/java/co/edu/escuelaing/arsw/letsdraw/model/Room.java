@@ -26,7 +26,7 @@ public class Room {
     private int limit; 
     private String password;
     private ArrayList<User> users = new ArrayList<User>(); 
-    private ArrayList<ArrayList<String>> messages = new ArrayList<ArrayList<String>>(); 
+    private ArrayList<String[]> messages = new ArrayList<String[]>(); 
     private int timer; 
     private Board board;
     private String word; 
@@ -117,11 +117,11 @@ public class Room {
         return id; 
     }
     
-    public void setMessages(ArrayList<ArrayList<String>> messages){
+    public void setMessages(ArrayList<String[]> messages){
         this.messages = messages; 
     }
     
-    public ArrayList<ArrayList<String>> getMessages(){
+    public ArrayList<String[]> getMessages(){
         return messages;  
     }
     
@@ -180,6 +180,10 @@ public class Room {
         return password; 
     }
     
+    public void sendMessage(String user, String message){
+           messages.add( new String[] {user , message} ); 
+    }
+
     
     
     

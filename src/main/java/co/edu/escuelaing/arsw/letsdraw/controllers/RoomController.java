@@ -33,13 +33,14 @@ public class RoomController {
     @RequestMapping("/")
     
     private String testing() throws LetsDrawServiceException {
+        letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
         return "Hello World ARSW";
     }
     @CrossOrigin
     @RequestMapping(value = "/getWord/{id}/", method = RequestMethod.GET)
     
     public String getWord(@PathVariable("id") int id) throws LetsDrawServiceException {
-        letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
+       
         String word = "N O N E";
         for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
             if (i.getRoom().getId() == id) {
@@ -66,6 +67,46 @@ public class RoomController {
         letsDrawServiceImpl.createRoom(new RoomServiceImpl(name, lenguaje, priv, limit));
 
         return letsDrawServiceImpl.getRooms().get(letsDrawServiceImpl.getRooms().size() - 1).getRoom().getId();
+    }
+    
+    @CrossOrigin
+    @RequestMapping(value = "/sendMessage/{id}/{name}/{message}/", method = RequestMethod.GET)
+    public void sendMessage(@PathVariable("id") int id , @PathVariable("name") String name, @PathVariable("message") String message) throws LetsDrawServiceException{
+        System.out.println("entro el mensaje");
+        for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
+            if (i.getRoom().getId() == id) {
+                i.getRoom().sendMessage(name, message);
+                
+
+            }
+        }
+    }
+    
+    @CrossOrigin
+    @RequestMapping(value = "/getMessages/{id}/", method = RequestMethod.GET)
+    public String getMessages(@PathVariable("id") int id ) throws LetsDrawServiceException{
+        String json = "";  
+        for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
+            if (i.getRoom().getId() == id) {
+                
+                ArrayList<String[]> mensajes = i.getRoom().getMessages() ;  
+                for(String[] j : mensajes ){
+                    System.out.println(mensajes.indexOf(j)); 
+                    if(mensajes.indexOf(j) == mensajes.size() - 1){
+                        json += "{\n"
+                        + "           \"user\": \"" + j[0] + "\",\n"
+                        + "           \"message\": \"" + j[1] + "\"\n"
+                        + "           }\n";
+                    }else{
+                        json += "{\n"
+                        + "           \"user\": \"" + j[0] + "\",\n"
+                        + "           \"message\": \"" + j[1] + "\"\n"
+                        + "           },\n";
+                    }  
+                } 
+            }
+        }
+        return "{ \"messages\" : [ " + json + "]} "; 
     }
 
     /**
