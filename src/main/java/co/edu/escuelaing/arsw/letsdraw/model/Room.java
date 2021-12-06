@@ -31,8 +31,8 @@ public class Room {
     private Board board;
     private String word; 
     private final int maxUsers = 10 ;
-    private String[] palabrasEs = {"caballo", "zanahoria", "pollo","carro" , "celular", "cabello", "lapiz"}; 
-    private String[] palabrasIn = {"horse", "carrot", "chicken", "car", "phone", "hair", "pencil"}; 
+    private String[] palabrasEs = {"caballo", "zanahoria", "pollo","carro" , "celular", "cabello", "lapiz","zapato", "sol" , "flor" , "arcoiris" , "agua"  }; 
+    private String[] palabrasIn = {"horse", "carrot", "chicken", "car", "phone", "hair", "pencil" , "shoe", "sun", "flower", "rainbow", "water" }; 
     private int actualPainter; 
     
     public Room(String name , String lenguaje , boolean priv , int limit ) throws LetsDrawServiceException{

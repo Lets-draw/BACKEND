@@ -128,18 +128,22 @@ public class RoomController {
     @RequestMapping(value = "/sendMessage/{id}/{name}/{message}/", method = RequestMethod.GET)
     public void sendMessage(@PathVariable("id") int id , @PathVariable("name") String name, @PathVariable("message") String message) throws LetsDrawServiceException{
         System.out.println("entro el mensaje");
+        System.out.println(id + " - " + name + " - " + message ); 
         boolean valid = false ; 
         for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
             if (i.getRoom().getId() == id) {
                 i.getRoom().sendMessage(name, message);
                 valid = ((i.getRoom().getWord()).equals(message)); 
+                System.out.println(valid);
                 if(valid){
                     for(User j : i.getRoom().getUsers()){
                         if(j.getNickname().equals(name) ){
-                            int points = j.getPoints();  
+                            int points = j.getPoints();
+                            System.out.println("entro a sumar"); 
                             j.setPoints(points += 10 );
+                            break; 
                         }
-                        break; 
+                        
                     }
                 }
                 break; 
