@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- *
  * @author jgarc
  */
 
@@ -31,16 +30,54 @@ public class RoomController {
     
     @CrossOrigin
     @RequestMapping("/")
-    
     private String testing() throws LetsDrawServiceException {
         letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
+        letsDrawServiceImpl.addUserToRoomById(new User("pepe" , "pepe") , 1);
         return "Hello World ARSW";
     }
+    
+    // retornar la plabra con  _ _ _ solo si el usuario no esta dibujando  
+    /*
+    @CrossOrigin
+    @RequestMapping(value = "/getWord2/{id}/{user}/", method = RequestMethod.GET)
+    
+    public String getWord2(@PathVariable("id") int id , @PathVariable("user") String user  ) throws LetsDrawServiceException {
+        
+        letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
+        letsDrawServiceImpl.addUserToRoomById(new User("pepe" , "pepe") , 1);
+        letsDrawServiceImpl.addUserToRoomById(new User("ana" , "ana") , 1);
+        letsDrawServiceImpl.getRooms().get(id - 1 ).getRoom().getUsers().get(0).setPainter();
+        
+        String word = "N O N E";
+        for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
+            if (i.getRoom().getId() == id) {
+                word = i.getRoom().getWord(); 
+            }
+        }
+        
+        String word2 = ""; 
+        for(User i : letsDrawServiceImpl.getRooms().get(id- 1 ).getRoom().getUsers()){
+            if(i.getNickname().equals(user )){
+                if(i.getIsDrawing()){
+                    word2 = word; 
+                }else{
+                    for(char j : word.toCharArray()){
+                        System.out.println(j);
+                        word2 += "_ " ;
+                    }
+                }
+                break; 
+            }
+        }
+        return "{\n"
+                + "    \"name\": " + "\"" + word2 +"\"\n"
+                + "}";
+    }
+    */ 
+    
     @CrossOrigin
     @RequestMapping(value = "/getWord/{id}/", method = RequestMethod.GET)
-    
     public String getWord(@PathVariable("id") int id) throws LetsDrawServiceException {
-       
         String word = "N O N E";
         for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
             if (i.getRoom().getId() == id) {
@@ -52,6 +89,35 @@ public class RoomController {
                 + "}";
     }
             
+    @CrossOrigin
+    @RequestMapping(value = "/adivinarPalabra/{id}/{palabra}/{usuario}/", method = RequestMethod.GET )
+    public void adivinarPalabra(@PathVariable("id") int id , @PathVariable("palabra") String palabra, 
+            @PathVariable("usuario") String usuario) throws LetsDrawServiceException{
+        
+        /** 
+        letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
+        letsDrawServiceImpl.addUserToRoomById(new User("pepe" , "pepe") , 1);
+        **/ 
+        boolean valid = false; 
+        for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
+            if (i.getRoom().getId() == id) {
+                valid = ((i.getRoom().getWord()).equals(palabra)); 
+                //System.out.println(palabra + " - " + i.getWord());
+                if(valid){
+                    for(User j : i.getRoom().getUsers()){
+                        if(j.getNickname().equals(usuario) ){
+                            int points = j.getPoints();  
+                            j.setPoints(points += 10 );
+                            //System.out.println("añadio puntos total = "  + j.getPoints()); 
+                        }
+                        break; 
+                    }
+                }
+                break; 
+            }
+        }
+    }
+    
     @CrossOrigin
     @RequestMapping(value = "/addRoom/{name}/{lenguaje}/{priv}/{limit}/", method = RequestMethod.GET)
     public int addRoom(@PathVariable("name") String name, @PathVariable("lenguaje") String lenguaje,

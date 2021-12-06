@@ -22,12 +22,14 @@ public class User {
     private int points; 
     private int id ; 
     private String skin; 
+    private boolean isDrawing; 
     
     
     public User(String nickname, String skin) throws LetsDrawServiceException{
         this.nickname = nickname; 
         points = 0 ; 
         this.skin = skin; 
+        isDrawing = false; 
     }
     public int getId(){
         return id; 
@@ -58,5 +60,21 @@ public class User {
     public void setSkin(String skin){
         this.skin = skin; 
     }
+    
+    public void setPainter(){
+        isDrawing = true; 
+    }
+    
+    public void stopPainting(){
+        isDrawing = false; 
+    }
+    
+    public boolean getIsDrawing(){
+        return isDrawing; 
+    }
+    
+    
+    
+    
   
 }
