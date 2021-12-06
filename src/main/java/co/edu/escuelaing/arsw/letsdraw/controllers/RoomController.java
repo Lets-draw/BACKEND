@@ -33,6 +33,7 @@ public class RoomController {
     private String testing() throws LetsDrawServiceException {
         letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
         letsDrawServiceImpl.addUserToRoomById(new User("pepe" , "pepe") , 1);
+        letsDrawServiceImpl.addUserToRoomById(new User("ana" , "ana") , 1);
         return "Hello World ARSW";
     }
     
@@ -88,35 +89,23 @@ public class RoomController {
                 + "    \"name\": " + "\"" + word +"\"\n"
                 + "}";
     }
-            
+    
     @CrossOrigin
-    @RequestMapping(value = "/adivinarPalabra/{id}/{palabra}/{usuario}/", method = RequestMethod.GET )
-    public void adivinarPalabra(@PathVariable("id") int id , @PathVariable("palabra") String palabra, 
-            @PathVariable("usuario") String usuario) throws LetsDrawServiceException{
-        
-        /** 
-        letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
-        letsDrawServiceImpl.addUserToRoomById(new User("pepe" , "pepe") , 1);
-        **/ 
-        boolean valid = false; 
+    @RequestMapping(value = "/getTimer/{id}/", method = RequestMethod.GET)
+    public String getTimer(@PathVariable("id") int id) throws LetsDrawServiceException {
+        int timer = 0; 
         for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
             if (i.getRoom().getId() == id) {
-                valid = ((i.getRoom().getWord()).equals(palabra)); 
-                //System.out.println(palabra + " - " + i.getWord());
-                if(valid){
-                    for(User j : i.getRoom().getUsers()){
-                        if(j.getNickname().equals(usuario) ){
-                            int points = j.getPoints();  
-                            j.setPoints(points += 10 );
-                            //System.out.println("añadio puntos total = "  + j.getPoints()); 
-                        }
-                        break; 
-                    }
-                }
-                break; 
+                i.getRoom().changeTimer();
+                timer = i.getRoom().getTimer(); 
             }
         }
+        return "{\n"
+                + "    \"timer\": " + "\"" + timer +"\"\n"
+                + "}";
     }
+            
+    
     
     @CrossOrigin
     @RequestMapping(value = "/addRoom/{name}/{lenguaje}/{priv}/{limit}/", method = RequestMethod.GET)
@@ -139,14 +128,39 @@ public class RoomController {
     @RequestMapping(value = "/sendMessage/{id}/{name}/{message}/", method = RequestMethod.GET)
     public void sendMessage(@PathVariable("id") int id , @PathVariable("name") String name, @PathVariable("message") String message) throws LetsDrawServiceException{
         System.out.println("entro el mensaje");
+        boolean valid = false ; 
         for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
             if (i.getRoom().getId() == id) {
                 i.getRoom().sendMessage(name, message);
-                
-
+                valid = ((i.getRoom().getWord()).equals(message)); 
+                if(valid){
+                    for(User j : i.getRoom().getUsers()){
+                        if(j.getNickname().equals(name) ){
+                            int points = j.getPoints();  
+                            j.setPoints(points += 10 );
+                        }
+                        break; 
+                    }
+                }
+                break; 
             }
         }
     }
+    
+    @CrossOrigin
+    @RequestMapping(value = "/endRound/{id}/", method = RequestMethod.GET)
+    
+    public void changeRound(@PathVariable("id") int id ){
+        for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
+            if (i.getRoom().getId() == id) {
+                i.changeTurn();
+                break; 
+            }
+        }
+    }
+    
+    
+
     
     @CrossOrigin
     @RequestMapping(value = "/getMessages/{id}/", method = RequestMethod.GET)
@@ -204,6 +218,7 @@ public class RoomController {
                         + "           \"id\": \"" + i.getId() + "\",\n"
                         + "           \"nikname\": \"" + i.getNickname() + "\",\n"
                         + "           \"points\": \"" + i.getPoints() + "\",\n"
+                        + "           \"dibujante\": \"" + i.getIsDrawing() + "\",\n"
                         + "           \"skin\": \"" + i.getSkin() + "\"\n"
                         + "           }\n";
             } else {
@@ -211,6 +226,7 @@ public class RoomController {
                         + "           \"id\": \"" + i.getId() + "\",\n"
                         + "           \"nikname\": \"" + i.getNickname() + "\",\n"
                         + "           \"points\": \"" + i.getPoints() + "\",\n"
+                        + "           \"dibujante\": \"" + i.getIsDrawing() + "\",\n"
                         + "           \"skin\": \"" + i.getSkin() + "\"\n"
                         + "           },\n";
             }

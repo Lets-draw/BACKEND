@@ -32,6 +32,9 @@ public class RoomServiceImpl implements InterfaceRoomService {
     public void addUser(User u) throws LetsDrawServiceException {
         if(room.getLimit() > room.getUsers().size() ){
             ArrayList<User> users = room.getUsers();
+            if(users.size() == 0 ){
+                u.setPainter();
+            }
             u.setId(room.getUsers().size() + 1 ) ;
             users.add(u); 
             room.setUsers(users);
@@ -69,7 +72,9 @@ public class RoomServiceImpl implements InterfaceRoomService {
 
     @Override
     public void changeTurn() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("entro a service");
+        room.changeWord();
+        room.changeTurn();
     }
 
     @Override

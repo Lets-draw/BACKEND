@@ -22,6 +22,7 @@ public interface InterfaceLetsDrawService {
     public ArrayList<RoomServiceImpl> getRooms(); 
     public void createRoom(RoomServiceImpl r); 
     public void addUserToRoomById(User u , int id ) throws LetsDrawServiceException ;
+    public void delUser(String u , int id) throws LetsDrawServiceException ; 
 
     
 }

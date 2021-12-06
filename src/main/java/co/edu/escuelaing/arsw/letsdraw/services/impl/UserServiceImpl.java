@@ -16,22 +16,18 @@ import co.edu.escuelaing.arsw.letsdraw.services.exceptions.LetsDrawServiceExcept
  */
 public class UserServiceImpl implements InterfaceUserService {
     private User user ; 
-    
     public UserServiceImpl(){}
     
     public UserServiceImpl(String nickname, String skin) throws LetsDrawServiceException{
     
         user = new User(nickname, skin); 
     }
-    
     @Override
     public void joinRoom(String id) {
         
     }
-
     @Override
     public void exitRoom(String id) {
         
     }
-    
 }

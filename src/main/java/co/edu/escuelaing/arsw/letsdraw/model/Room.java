@@ -33,6 +33,7 @@ public class Room {
     private final int maxUsers = 10 ;
     private String[] palabrasEs = {"caballo", "zanahoria", "pollo","carro" , "celular", "cabello", "lapiz"}; 
     private String[] palabrasIn = {"horse", "carrot", "chicken", "car", "phone", "hair", "pencil"}; 
+    private int actualPainter; 
     
     public Room(String name , String lenguaje , boolean priv , int limit ) throws LetsDrawServiceException{
         this.name = name ;
@@ -44,6 +45,7 @@ public class Room {
         word = randomWord(); 
         randomPassword(); 
         board = new Board(); 
+        actualPainter = 0; 
     }
     
     private String randomWord(){
@@ -183,9 +185,26 @@ public class Room {
     public void sendMessage(String user, String message){
            messages.add( new String[] {user , message} ); 
     }
-
     
+    public void changeTurn(){
+        users.get(actualPainter).stopPainting(); 
+        System.out.println(actualPainter); 
+        if((actualPainter + 1) < users.size()){ 
+            actualPainter ++ ; 
+        }else{
+            actualPainter = 0; 
+        }   
+        System.out.println(actualPainter); 
+        users.get(actualPainter).setPainter();
+    }
     
+    public void changeTimer(){
+        if(timer - 1  <= 0){
+            timer = 60 ; 
+        }else{
+            timer -- ; 
+        }
+    }
     
 }
     

@@ -30,10 +30,20 @@ public class UserController {
     LetsDrawServiceImpl letsDrawServiceImpl; 
     
     @RequestMapping(value = "/addUser/{name}/{skin}/{id}", method = RequestMethod.GET)
-    
     public String createAndAddUser(@PathVariable("name") String name,@PathVariable("skin") String skin ,@PathVariable("id") int id ) throws LetsDrawServiceException {
         letsDrawServiceImpl.addUserToRoomById(new User(name, skin) , id);
         return name;    
     }
+    
+    
+    @RequestMapping(value = "delUser/{name}/{id}", method = RequestMethod.GET)
+    public String deleteUser(@PathVariable("name") String name ,@PathVariable("id") int id ) throws LetsDrawServiceException {
+        letsDrawServiceImpl.delUser(name, id);
+        return name;    
+    }
+    
+    
+    
+    
     
 }

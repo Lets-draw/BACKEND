@@ -43,5 +43,21 @@ public class LetsDrawServiceImpl implements InterfaceLetsDrawService {
             } 
         }
     }
-
+    
+    @Override
+    public void delUser(String u, int id) throws LetsDrawServiceException {
+        ArrayList<RoomServiceImpl> rooms = getRooms();
+        for(RoomServiceImpl i : rooms ){
+            User n = null; 
+            if (i.getRoom().getId() == id){
+                for(User j: i.getRoom().getUsers()){
+                    if(j.getNickname().equals(u)){
+                        n = j;  
+                    } 
+                }
+                i.delUser(n);
+                break; 
+            } 
+        }
+    }
 }
