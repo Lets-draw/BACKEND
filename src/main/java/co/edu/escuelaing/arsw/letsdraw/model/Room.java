@@ -201,6 +201,8 @@ public class Room {
     public void changeTimer(){
         if(timer - 1  <= 0){
             timer = 60 ; 
+            changeWord(); 
+            changeTurn(); 
         }else{
             timer -- ; 
         }

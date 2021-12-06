@@ -148,21 +148,6 @@ public class RoomController {
     }
     
     @CrossOrigin
-    @RequestMapping(value = "/endRound/{id}/", method = RequestMethod.GET)
-    
-    public void changeRound(@PathVariable("id") int id ){
-        for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
-            if (i.getRoom().getId() == id) {
-                i.changeTurn();
-                break; 
-            }
-        }
-    }
-    
-    
-
-    
-    @CrossOrigin
     @RequestMapping(value = "/getMessages/{id}/", method = RequestMethod.GET)
     public String getMessages(@PathVariable("id") int id ) throws LetsDrawServiceException{
         String json = "";  
