@@ -187,9 +187,10 @@ public class Room {
     }
     
     public void changeTurn(){
-        users.get(actualPainter).stopPainting(); 
+        
         System.out.println(actualPainter); 
         if((actualPainter + 1) < users.size()){ 
+            users.get(actualPainter).stopPainting(); 
             actualPainter ++ ; 
         }else{
             actualPainter = 0; 
