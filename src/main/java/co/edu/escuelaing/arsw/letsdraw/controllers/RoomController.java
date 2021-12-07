@@ -132,7 +132,6 @@ public class RoomController {
         boolean valid = false ; 
         for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
             if (i.getRoom().getId() == id) {
-                i.getRoom().sendMessage(name, message);
                 valid = ((i.getRoom().getWord()).equals(message)); 
                 System.out.println(valid);
                 if(valid){
@@ -145,6 +144,8 @@ public class RoomController {
                         }
                         
                     }
+                }else{
+                    i.getRoom().sendMessage(name, message);
                 }
                 break; 
             }
