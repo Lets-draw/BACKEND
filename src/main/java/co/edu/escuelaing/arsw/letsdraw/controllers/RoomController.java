@@ -136,7 +136,7 @@ public class RoomController {
                 System.out.println(valid);
                 if(valid){
                     for(User j : i.getRoom().getUsers()){
-                        if(j.getNickname().equals(name) ){
+                        if(j.getNickname().equals(name) && !j.getIsDrawing() ){
                             int points = j.getPoints();
                             System.out.println("entro a sumar"); 
                             j.setPoints(points += 10 );

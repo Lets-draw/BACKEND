@@ -36,7 +36,7 @@ public class UserController {
     }
     
     
-    @RequestMapping(value = "delUser/{name}/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/delUser/{name}/{id}", method = RequestMethod.GET)
     public String deleteUser(@PathVariable("name") String name ,@PathVariable("id") int id ) throws LetsDrawServiceException {
         letsDrawServiceImpl.delUser(name, id);
         return name;    
