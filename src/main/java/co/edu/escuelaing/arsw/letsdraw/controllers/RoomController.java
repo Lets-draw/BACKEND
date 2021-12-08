@@ -96,7 +96,6 @@ public class RoomController {
         int timer = 0; 
         for(RoomServiceImpl i : letsDrawServiceImpl.getRooms()){
             if (i.getRoom().getId() == id) {
-                i.getRoom().changeTimer();
                 timer = i.getRoom().getTimer(); 
             }
         }
@@ -184,6 +183,26 @@ public class RoomController {
      * @param id
      * @return
      */
+    @CrossOrigin
+    @RequestMapping(value = "/stopTimer/{id}", method = RequestMethod.GET)
+    public void stopTimer(@PathVariable("id") int id ){
+         for (RoomServiceImpl i : letsDrawServiceImpl.getRooms()) {
+            if (i.getRoom().getId() == id) {
+                i.stopTimer();
+            }
+         }
+    }
+    
+    @CrossOrigin
+    @RequestMapping(value = "/startTimer/{id}", method = RequestMethod.GET)
+    public void startTimer(@PathVariable("id") int id ){
+         for (RoomServiceImpl i : letsDrawServiceImpl.getRooms()) {
+            if (i.getRoom().getId() == id) {
+                i.startTimer();
+            }
+         }
+    }
+    
     @CrossOrigin
     @RequestMapping(value = "/getRoomInfo/{id}", method = RequestMethod.GET)
     public String getRoomInfo(@PathVariable("id") int id) throws LetsDrawServiceException {

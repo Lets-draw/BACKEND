@@ -7,8 +7,12 @@ package co.edu.escuelaing.arsw.letsdraw.model;
 
 import co.edu.escuelaing.arsw.letsdraw.services.impl.LetsDrawServiceImpl;
 import co.edu.escuelaing.arsw.letsdraw.services.exceptions.LetsDrawServiceException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import javax.swing.Timer;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -27,6 +31,7 @@ public class Room {
     private String password;
     private ArrayList<User> users = new ArrayList<User>(); 
     private ArrayList<String[]> messages = new ArrayList<String[]>(); 
+    private Timer tt; 
     private int timer; 
     private Board board;
     private String word; 
@@ -37,7 +42,6 @@ public class Room {
     
     public Room(String name , String lenguaje , boolean priv , int limit ) throws LetsDrawServiceException{
         this.name = name ;
-        this.timer = 60; 
         this.lenguaje = lenguaje; 
         this.limit = limit; 
         validLimit(); 
@@ -46,8 +50,23 @@ public class Room {
         randomPassword(); 
         board = new Board(); 
         actualPainter = 0; 
+        iniciarTimer(); 
+        startTimer(); 
     }
     
+    private void iniciarTimer(){
+        tt = new Timer (1000, new ActionListener ()
+{
+        public void actionPerformed(ActionEvent e)
+        {
+            if(timer - 1 <= 0 ){
+                timer = 60; 
+            }else{
+                timer -- ; 
+            }
+        }
+    });
+    }
     private String randomWord(){
         String w = ""; 
         SecureRandom random = new SecureRandom();
@@ -131,9 +150,7 @@ public class Room {
         return timer; 
     }
     
-    public void setTimer(int timer){
-        this.timer = timer; 
-    }
+
     
     public void setUsers(ArrayList<User> users){
         this.users = users; 
@@ -199,15 +216,15 @@ public class Room {
         users.get(actualPainter).setPainter();
     }
     
-    public void changeTimer(){
-        if(timer - 1  <= 0){
-            timer = 60 ; 
-            changeWord(); 
-            changeTurn(); 
-        }else{
-            timer -- ; 
-        }
+   
+    
+    public void stopTimer(){
+        tt.stop(); 
     }
+     public void startTimer(){
+        tt.start(); 
+    }
+    
     
 }
     

@@ -62,12 +62,12 @@ public class RoomServiceImpl implements InterfaceRoomService {
 
     @Override
     public void startTimer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        room.startTimer(); 
     }
 
     @Override
     public void stopTimer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        room.stopTimer(); 
     }
 
     @Override
