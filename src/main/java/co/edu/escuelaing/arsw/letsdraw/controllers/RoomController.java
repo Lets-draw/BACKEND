@@ -204,6 +204,33 @@ public class RoomController {
     }
     
     @CrossOrigin
+    @RequestMapping(value = "/setBoard/{id}/{board}", method = RequestMethod.GET)
+    public void setBoard(@PathVariable("id") int id , @PathVariable("board") String board  ){
+        for (RoomServiceImpl i : letsDrawServiceImpl.getRooms()) {
+            if (i.getRoom().getId() == id) {
+                i.getRoom().setBoard(board); 
+            }
+         }
+    }
+    
+    @CrossOrigin
+    @RequestMapping(value = "/getBoard/{id}", method = RequestMethod.GET)
+    public String setBoard(@PathVariable("id") int id  ){
+        String finalBoard = ""; 
+        for (RoomServiceImpl i : letsDrawServiceImpl.getRooms()) {
+            if (i.getRoom().getId() == id) {
+                finalBoard = i.getRoom().getBoard(); 
+            }
+         }
+        return "{\n"
+                + "    \"board\": " + "\"" + finalBoard +"\"\n"
+                + "}";
+    }
+    
+    
+    
+    
+    @CrossOrigin
     @RequestMapping(value = "/getRoomInfo/{id}", method = RequestMethod.GET)
     public String getRoomInfo(@PathVariable("id") int id) throws LetsDrawServiceException {
         //letsDrawServiceImpl.createRoom(new RoomServiceImpl("sala", "En", false, 10));
