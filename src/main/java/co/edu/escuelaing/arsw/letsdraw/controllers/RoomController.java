@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.json.*;
 
 /**
  * @author jgarc
@@ -204,13 +206,15 @@ public class RoomController {
     }
     
     @CrossOrigin
-    @RequestMapping(value = "/setBoard/{id}/{board}", method = RequestMethod.GET)
-    public void setBoard(@PathVariable("id") int id , @PathVariable("board") String board  ){
+    @RequestMapping(value = "/setBoard", method = RequestMethod.POST)
+    public void setBoard(@RequestBody JSONObject board){
+        int id = (int) board.get("id"); 
+        String bo = (String) board.get("board");
         for (RoomServiceImpl i : letsDrawServiceImpl.getRooms()) {
             if (i.getRoom().getId() == id) {
-                i.getRoom().setBoard(board); 
+                i.getRoom().setBoard(bo); 
             }
-         }
+        }
     }
     
     @CrossOrigin

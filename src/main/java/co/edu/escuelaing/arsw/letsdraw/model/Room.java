@@ -197,7 +197,7 @@ public class Room {
     public void setBoard(String board){
         this.board = board; 
     } 
-    
+
     public String getPassword(){
         return password; 
     }
@@ -231,6 +231,10 @@ public class Room {
      public void startTimer(){
         tt.start(); 
     }
+     
+     public void cleanBoard(){
+         board = ""; 
+     }
     
     
 }
