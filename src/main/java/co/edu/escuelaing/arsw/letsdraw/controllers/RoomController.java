@@ -207,9 +207,12 @@ public class RoomController {
     
     @CrossOrigin
     @RequestMapping(value = "/setBoard", method = RequestMethod.POST)
-    public void setBoard(@RequestBody JSONObject board){
-        int id = (int) board.get("id"); 
-        String bo = (String) board.get("board");
+    public void setBoard(@RequestBody String board){
+        JSONObject boardj = new JSONObject(board);  
+        System.out.println(boardj.get("id")); 
+        System.out.println(boardj.get("board"));
+        int id = (int) boardj.get("id"); 
+        String bo = (String) boardj.get("board");
         for (RoomServiceImpl i : letsDrawServiceImpl.getRooms()) {
             if (i.getRoom().getId() == id) {
                 i.getRoom().setBoard(bo); 
