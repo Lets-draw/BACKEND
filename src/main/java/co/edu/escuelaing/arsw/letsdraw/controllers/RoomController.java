@@ -206,7 +206,7 @@ public class RoomController {
     }
     
     @CrossOrigin
-    @RequestMapping(value = "/setBoard", method = RequestMethod.POST)
+    @RequestMapping(value = "/setBoard", method = {RequestMethod.GET, RequestMethod.PUT , RequestMethod.POST } )
     public void setBoard(@RequestBody String board){
         JSONObject boardj = new JSONObject(board);  
         System.out.println(boardj.get("id")); 
