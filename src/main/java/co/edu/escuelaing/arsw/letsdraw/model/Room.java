@@ -61,6 +61,7 @@ public class Room {
         {
             if(timer - 1 <= 0 ){
                 timer = 60; 
+                changeTurn(); 
             }else{
                 timer -- ; 
             }
