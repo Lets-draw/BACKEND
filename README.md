@@ -12,7 +12,6 @@ Es un juego multijugador en tiempo real, basado en el juego pictionary, el cual 
 ### casos de uso
 ![img/img2.png](img/img2.png)
 ![img/img3.png](img/img3.png)
-![img/img4.png](img/img4.png)
 
 ### diagrama de componentes
 ![img/img5.png](img/img5.png)
