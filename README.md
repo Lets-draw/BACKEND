@@ -61,7 +61,7 @@ Back-end
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d52e80c1dd0143af9d018f80e1a00e72)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Lets-draw/BACKEND&amp;utm_campaign=Badge_Grade)
 
-[![CircleCI](https://circleci.com/gh/Lets-draw/BACKEND/tree/master.svg?style=svg&cicle-token=f6a9b2d6cb803f2a6da39a1f6c4d3c7c2e5ce842)](https://circleci.com/gh/Lets-draw/BACKEND/tree/master)
+[![CircleCI](https://circleci.com/gh/Lets-draw/BACKEND/tree/master.svg?style=svg&circle-token=21fee0a4b8fee0df46596f4f2bdce7a9e8166add)](https://circleci.com/gh/Lets-draw/BACKEND/tree/master)
 
 Front-end
 
