@@ -140,7 +140,7 @@ public class RoomController {
                         if(j.getNickname().equals(name) && !j.getIsDrawing() ){
                             int points = j.getPoints();
                             System.out.println("entro a sumar"); 
-                            j.setPoints(points += 10 );
+                            j.setPoints(points += (i.getRoom().getTimer()));
                             break; 
                         }
                         
