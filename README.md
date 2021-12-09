@@ -29,7 +29,6 @@ La primera vista que se muestra permite al usuario seleccionar un nombre y un pe
 ![img/img8.png](img/img8.png)
 ### Vista menú
 Posteriormente nos dirige a la vista del menú, en esta se presentan 3 opciones como se muestra en la imagen.
-
 ![img/img9.png](img/img9.png)
 
 ### Opcion menú: Crear Sala
