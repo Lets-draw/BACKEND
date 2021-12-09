@@ -61,13 +61,13 @@ Back-end
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d52e80c1dd0143af9d018f80e1a00e72)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Lets-draw/BACKEND&amp;utm_campaign=Badge_Grade)
 
-[![Lets-draw](https://circleci.com/gh/Lets-draw/BACKEND.svg?style=svg)](https://app.circleci.com/pipelines/github/Lets-draw/BACKEND)
+[![CircleCI](https://circleci.com/gh/Lets-draw/BACKEND/tree/master.svg?style=svg&cicle-token=18300feecc1b2a2e3f77d231eae73206fb5639ac)](https://circleci.com/gh/Lets-draw/BACKEND/tree/master)
 
 Front-end
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6782db487147454da08c649de70c8429)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Lets-draw/FRONTEND&amp;utm_campaign=Badge_Grade)
 
-[![Lets-draw](https://circleci.com/gh/Lets-draw/FRONTEND.svg?style=svg)](https://app.circleci.com/pipelines/github/Lets-draw/FRONTEND)
+[![CircleCI](https://circleci.com/gh/Lets-draw/FRONTEND/tree/main.svg?style=svg&circle-token=06533787438f4f08a837264a7036ea3b9a6491d5)](https://circleci.com/gh/Lets-draw/FRONTEND/tree/main)
 
 # Licencia & Derechos de Autor
 
