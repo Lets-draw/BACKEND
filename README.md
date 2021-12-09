@@ -57,13 +57,13 @@ Por ultimo podemos ver, cada que se acaba una ronda, una imagen como la que se m
 * [Heroku] (https://www.heroku.com)
 
 ## Calidad de codigo y ci
-Back-end
+### Back-end
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d52e80c1dd0143af9d018f80e1a00e72)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Lets-draw/BACKEND&amp;utm_campaign=Badge_Grade)
 
 [![CircleCI](https://circleci.com/gh/Lets-draw/BACKEND/tree/master.svg?style=svg&circle-token=21fee0a4b8fee0df46596f4f2bdce7a9e8166add)](https://circleci.com/gh/Lets-draw/BACKEND/tree/master)
 
-Front-end
+### Front-end
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6782db487147454da08c649de70c8429)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Lets-draw/FRONTEND&amp;utm_campaign=Badge_Grade)
 
