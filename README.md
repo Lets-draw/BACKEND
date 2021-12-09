@@ -13,39 +13,49 @@ Es un juego multijugador en tiempo real, basado en el juego pictionary, el cual 
 ![img/img2.png](img/img2.png)
 ![img/img3.png](img/img3.png)
 ![img/img4.png](img/img4.png)
+
 ### diagrama de componentes
 ![img/img5.png](img/img5.png)
+
 ### diagrama de despliegue
 ![img/img6.png](img/img6.png)
+
 ### diagrama de clases
 ![img/img7.png](img/img7.png)
 
 ## Funcionamiento
-###Vista principal
+### Vista principal
 La primera vista que se muestra permite al usuario seleccionar un nombre y un personaje o skin, ***sin alguno de estos 2 elementos falta no se puede avanzar a la siguiente vista***.
 ![img/img8.png](img/img8.png)
-###Vista menú
+### Vista menú
 Posteriormente nos dirige a la vista del menú, en esta se presentan 3 opciones como se muestra en la imagen.
+
 ![img/img9.png](img/img9.png)
 
-###Opcion menú: Crear Sala
+### Opcion menú: Crear Sala
 La primera opción **CREAR** permite al usuario crear una sala con: nombre, lenguaje, # de jugadores y la posibilidad de ser privado.
+
 ![img/img10.png](img/img10.png)
 
-###Opcion menú: Unirse a sala
+### Opcion menú: Unirse a sala
 La segunda opción **UNIRSE** permite al usuario conectarse a una sala en especifico si conoce su numero de id.
+
 ![img/img11.png](img/img11.png)
 
-###Opcion menu: Lobby
+### Opcion menu: Lobby
 Por ultimo la opción **LOBBY** despliega la lista de salas disponibles , además de esto permite ver las características de las mismas.
 
 ![img/img12.png](img/img12.png)
-###Vista al interior de una sala
-Cualquiera de las opciones anteriormente mencionadas redirecciona al usuario al interior de una sala , en esta se encuentra una lista de usuarios(parte izquierda) , un chat(parte derecha) y un tablero para dibujar en la parte central
+
+### Vista al interior de una sala
+Cualquiera de las opciones anteriormente mencionadas redirecciona al usuario al interior de una sala , en esta se encuentra una lista de usuarios(parte izquierda) , un chat(parte derecha) y un tablero para dibujar en la parte central.
+
 ![img/img13.png](img/img13.png)
 además de esto en la parte inferior se encuentran las opciones de salir de la sala, limpiar el canvas , el color y el grosor del pincel .
+
 ![img/img15.png](img/img15.png)
-Por ultimo podemos ver, cada que se acaba una ronda, una imagen como la que se muestra a continuación
+Por ultimo podemos ver, cada que se acaba una ronda, una imagen como la que se muestra a continuación.
+
 ![img/img14.png](img/img14.png)
 
 ## Construido con
